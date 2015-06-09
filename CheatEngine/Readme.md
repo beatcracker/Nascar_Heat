@@ -17,11 +17,29 @@ PowerShell script that will convert resulting CSV file to [CheatEngine](http://w
 
  * Ready to use сheat table
 
-#####How-to
+#####How to generate cheat table
+
  * Open file (`heat.bin`) in IDA
  * Wait for autoanalysis to complete
- * `File` -> `Script file...` -> `FloatsToCsv.idc`
+ * `File` → `Script file...` → `FloatsToCsv.idc`
   * In the file save dialog choose path to the new CSV file. If you cancel dialog, script will only output CSV to IDA console
   * Open PowerShell console
   * Execute `.\CsvToCheatTable.ps1 -CsvPath 'X:\Path\To\File.csv' -CheatTablePath 'X:\Path\To\CheatTable.ct'`
   * Or just put `heat.csv` and script to the same folder and execute `.\CsvToCheatTable.ps1`. Script will save cheat table alongside as `Heat.ct`
+
+#####How to use cheat table
+
+ * Start Nascar Heat
+  * To run Nascar Heat in window mode, get [dgVoodoo 2](http://dege.freeweb.hu)
+  * Copy `D3DImm.dll` and `DDraw.dll` to the current user's TEMP folder (see %TEMP% environment variable)
+  * Run `dgVoodooSetup.exe`
+  * Add path to TEMP folder to the `Config folder / Running` instance list
+  * Go to `DirectX` tab and uncheck:
+    * `Application controled fullscreen/windowed state`
+    * `Disable Alt-Enter to toggle screen state`
+  * After Nascar Heat starts, use Alt-Enter to switch to windowed mode
+ * Start CheatEngine
+ * `File` → `Open Process`
+ * Find `heat.bin` in the list and click `Open` button
+ * `File` → `Open File` → `Heat.ct`
+ *  Now you can modify values in the cheat table
