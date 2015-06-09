@@ -62,13 +62,8 @@ After a disassembly and quick look at the string references, I've found a functi
     	if (RawVidMemSize > 64000000)
     		{
     			MemSize = 64
-    		}
-    }
-
-
-For ones interested, here is actual control flow of the function from the IDA with my comments. [Full-size image][7] onclick.
-
-[![Videocard memory size detection][8]][9]
+    		}7
+[![Videocard memory size detection][7]][8]
 
 Now it's time to actually look at what's happens inside this procedure. I've used a classical break & enter trick (patched the first instruction at `race.bin`'s entry point with `int3`), launched `NASCAR Heat Demo.exe` and waited for debugger to pop up. And that's when the things became clear.
 
