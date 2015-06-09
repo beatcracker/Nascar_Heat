@@ -164,8 +164,8 @@ It's also have been [confirmed][18] that the same bug exists in [Viper Racing][1
   [3]: http://www.ollydbg.de
   [4]: https://www.hex-rays.com/products/ida/support/download_freeware.shtml
   [5]: https://msdn.microsoft.com/en-us/library/ms682438.aspx
-  [6]: Images/Sneaky_User?raw=true
-  [7]: Images/IDA_Flow?raw=true
+  [6]: Images/Sneaky_User.png?raw=true
+  [7]: Images/IDA_Flow.png?raw=true
   [8]: Images/IDA_Flow_Preview.png?raw=true
   [10]: http://blogs.msdn.com/b/chuckw/archive/2010/06/16/wither-directdraw.aspx
   [11]: http://support2.microsoft.com/default.aspx?kbid=2026022
