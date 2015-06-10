@@ -8,7 +8,6 @@ Param
 #region Here-strings used to build XML cheat table
 
 $CheatTableXml = @'
-<?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="18">
     <CheatEntries>
      {0}
@@ -21,8 +20,16 @@ $CheatGroupXml = @'
 <CheatEntry>
     <ID>{0}</ID>
     <Description>"{1}"</Description>
-    <Options moHideChildren="1" moBindActivation="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
-    <LastState Value="" Activated="0" RealAddress="00000000"/>
+    <Options
+        moHideChildren="1"
+        moBindActivation="1"
+        moRecursiveSetValue="1"
+        moManualExpandCollapse="1"
+        moAllowManualCollapseAndExpand="1"/>
+    <LastState
+        Value=""
+        Activated="0"
+        RealAddress="00000000"/>
     <Color>80000008</Color>
     <GroupHeader>1</GroupHeader>
     <CheatEntries>
@@ -35,7 +42,10 @@ $CheatEntryXml = @'
 <CheatEntry>
     <ID>{0}</ID>
     <Description>"{1}"</Description>
-    <LastState Value="{2:e}" Activated="0" RealAddress="{3:x}"/>
+    <LastState
+        Value="{2:e}"
+        Activated="0"
+        RealAddress="{3:x}"/>
     <Color>80000008</Color>
     <VariableType>Float</VariableType>
     <Address>{4}+{5:x}</Address>
@@ -135,10 +145,9 @@ if(!$CheatTablePath)
 }
 
 # Cheat Engine can't handle XML with BOM
-$XmlWriterSettings = New-Object -TypeName System.Xml.XmlWriterSettings
-$XmlWriterSettings.Encoding = New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false # false means no BOM
+$XmlWriterSettings = New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false # false means no BOM
 
-$XmlTextWriter = New-Object -TypeName System.Xml.XmlTextWriter -ArgumentList ($CheatTablePath, $XmlWriterSettingss)
+$XmlTextWriter = New-Object -TypeName System.Xml.XmlTextWriter -ArgumentList ($CheatTablePath, $XmlWriterSettings)
 $XmlTextWriter.Formatting = 'Indented'
 $XmlTextWriter.Indentation = 2
 
