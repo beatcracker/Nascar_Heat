@@ -6,7 +6,7 @@
 
 PowerShell script that will convert resulting CSV file to [CheatEngine](http://www.cheatengine.org) cheat table. It accepts folowing aprameters:
  * `-CsvPath` - path to read CSV from
- * `-CheatTablePath` - path to save cheat table to
+ * `-CheatTablePath` - path to save cheat table to. If not specified, file will be created in the script directory with filename from CsvPath's and `ct` extension.
  * `-GameFile` - in case, you're not analysing `heat.bin`, specify filename here (it used in the cheat table to specify imagebase and offset)
 
 #####`Heat.csv`

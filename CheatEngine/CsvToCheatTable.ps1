@@ -1,7 +1,7 @@
 Param
 (
     [string]$CsvPath = '.\Heat.csv',
-    [string]$CheatTablePath = (Join-Path -Path (Split-Path $script:MyInvocation.MyCommand.Path) -ChildPath 'Heat.ct'),
+    [string]$CheatTablePath,
     [string]$GameFile = 'heat.bin'
 )
 
@@ -46,6 +46,10 @@ $CheatEntryXml = @'
 
 # Read CSV file
 $Csv = Import-Csv -Path $CsvPath
+if(!$Csv)
+{
+    throw 'Can''t read CSV file or it''s empty!'
+}
 
 #region Find sequental addreses (used to build groups in cheat table)
 
@@ -84,18 +88,30 @@ $ItemInGroupId = 0
                 # Build group
                 $CheatGroup = $_ |
                     ForEach-Object {
-                        $CheatEntryXml -f $ItemInGroupId, ('{0}: {1}' -f $_.Name, $_.Disasm), [float]$_.Value, [int]$_.Address, $GameFile, [int]$_.Offset
+                        $CheatEntryXml -f $ItemInGroupId,
+                                        ('{0}: {1}' -f $_.Name, $_.Disasm),
+                                        [float]$_.Value,
+                                        [int]$_.Address,
+                                        $GameFile,
+                                        [int]$_.Offset
                         $ItemInGroupId++
                     }
                 $ItemInGroupId = 0
 
-                $CheatGroupXml -f $ItemId, ('Range: {0} - {1}' -f $_[0].Address, $_[-1].Address), ($CheatGroup -join [Environment]::NewLine)
+                $CheatGroupXml -f $ItemId,
+                                ('Range: {0} - {1}' -f $_[0].Address, $_[-1].Address),
+                                ($CheatGroup -join [Environment]::NewLine)
                 $ItemId++
             }
             else
             {
                 # Build single entry
-                $CheatEntryXml -f $ItemId, ('{0}: {1}' -f $_[0].Name, $_[0].Disasm), [float]$_[0].Value, [int]$_[0].Address, $GameFile, [int]$_[0].Offset
+                $CheatEntryXml -f $ItemId,
+                                ('{0}: {1}' -f $_[0].Name, $_[0].Disasm),
+                                [float]$_[0].Value,
+                                [int]$_[0].Address,
+                                $GameFile,
+                                [int]$_[0].Offset
                 $ItemId++
             }
     }) -join [Environment]::NewLine
@@ -104,6 +120,19 @@ $ItemInGroupId = 0
 #endregion
 
 #region Write XML cheat table to file
+
+if(!$CheatTablePath)
+{
+    # If CheatTablePath is not specified, set it to the: X:\Path\To\Script Directory\CsvFileName.ct
+    $CheatTablePath = (Join-Path -Path (
+                            Split-Path $script:MyInvocation.MyCommand.Path
+                        ) -ChildPath (
+                            [System.IO.Path]::GetFileNameWithoutExtension(
+                                (Split-Path -Path $CsvPath -Leaf)
+                            ) + '.ct'
+                        )
+    )
+}
 
 # Cheat Engine can't handle XML with BOM
 $XmlWriterSettings = New-Object -TypeName System.Xml.XmlWriterSettings
