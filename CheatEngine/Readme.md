@@ -1,23 +1,23 @@
-#####`FloatsToCsv.idc`
+##### `FloatsToCsv.idc`
  
   * IDC script for [IDA](https://www.hex-rays.com) that will rip floating point constants from `heat.bin` (or any other executable file) and save them to CSV file. Tested with [IDA Free 5.0](https://www.hex-rays.com/products/ida/support/download_freeware.shtml).
   
-#####`CsvToCheatTable.ps1`
+##### `CsvToCheatTable.ps1`
 
 PowerShell script that will convert resulting CSV file to [CheatEngine](http://www.cheatengine.org) cheat table. It accepts folowing parameters:
  * `-CsvPath` - path to read CSV from
  * `-CheatTablePath` - path to save cheat table to. If not specified, file will be created in the script directory with filename from `CsvPath`'s and `ct` extension.
  * `-GameFile` - in case, you're not analysing `heat.bin`, specify filename here (it used in the cheat table to specify imagebase and offset)
 
-#####`Heat.csv`
+##### `Heat.csv`
 
  * Ready to use CSV
 
-#####`Heat.ct`
+##### `Heat.ct`
 
  * Ready to use сheat table
 
-#####How to generate cheat table
+##### How to generate cheat table
 
  * Open file (`heat.bin`) in IDA
  * Wait for autoanalysis to complete
@@ -27,7 +27,7 @@ PowerShell script that will convert resulting CSV file to [CheatEngine](http://w
   * Execute `.\CsvToCheatTable.ps1 -CsvPath 'X:\Path\To\File.csv' -CheatTablePath 'X:\Path\To\CheatTable.ct'`
   * Or just put `heat.csv` and script to the same folder and execute `.\CsvToCheatTable.ps1`. Script will save cheat table alongside as `Heat.ct`
 
-#####How to use cheat table
+##### How to use cheat table
 
  * Start Nascar Heat
   * To run Nascar Heat in window mode, get [dgVoodoo 2](http://dege.freeweb.hu)
