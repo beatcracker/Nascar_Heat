@@ -1,6 +1,6 @@
 Copy of [Windows 8.1 DirectDraw and compatibility with older games](http://superuser.com/questions/880216/windows-8-1-directdraw-and-compatibility-with-older-games) question from Superuser.com:
 
-##Question:
+## Question:
 
 I’m trying to run an old game (Nascar Heat 2002) on my Windows 8.1 laptop. The problem I am having is that the game crashes before startup, and in the logs it reports that no video ram is available. This is the log file:
 
@@ -15,7 +15,7 @@ I’m trying to run an old game (Nascar Heat 2002) on my Windows 8.1 laptop. The
 
 As far as I can tell, the version of DirectDraw included Windows 8.1 isn’t compatible with older games such as this. I have tried using WineD3D’s libs, among other ddraw wrappers/hacks, but to no avail. So my question is this: Is there a way to force an emulated amount of vram (my card does have video ram) either in Windows or in a ddraw wrapper, to ensure this game detects it? I've updated to the latest catalyst drivers and have the Microsoft DirectX 9.0c End-User Runtime
 
-##Answer:
+## Answer:
 
 ### I have a sneaking suspicion...
 I can smell a video card detection routine gone bad from here. This has nothing to do with Windows and\or DirectDraw (well partially it does, but not the way you think). It's just an old game makes assumptions that are no longer valid. It's not uncommon. For example Oni game [crashes on modern videocards][1]:
